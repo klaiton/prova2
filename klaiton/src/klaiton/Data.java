@@ -15,6 +15,58 @@ public class Data {
 	    this.setData(_dia,_mes,_ano);
 	  }
 	  
+	  public Data(String _dtStr) throws Exception {
+			this.setData(_dtStr);
+	}
+	
+	  public void setData(String data) throws Exception {
+			int _dia;
+			int _mes;
+			int _ano;
+			int cont;
+			cont = data.indexOf("/");
+			
+			// Formato: "dd	"
+			
+			if(cont == 2) {
+				_dia = Integer.parseInt(data.substring(0,2));
+				cont = data.indexOf("/",3);	
+				
+				// Formato: "dd/m/aaaa"
+				
+				if(cont == 4) {
+					_mes = Integer.parseInt(data.substring(3,4));
+					_ano = Integer.parseInt(data.substring(5,9));
+				}else {		
+					
+					// Formato: "dd/mm/aaaa"
+					
+					_mes = Integer.parseInt(data.substring(3,5));
+					_ano = Integer.parseInt(data.substring(6,10));
+				}
+				
+			// Formato: "d"
+				
+			}else {
+				_dia = Integer.parseInt(data.substring(0,1));
+				cont = data.indexOf("/",2);
+				
+				// Formato: "d/m/aaaa"
+				
+				if(cont == 3) {
+					_mes = Integer.parseInt(data.substring(2,3));
+					_ano = Integer.parseInt(data.substring(4,8));
+				}else {
+					
+					// Formato: "d/mm/aaaa"
+					
+					_mes = Integer.parseInt(data.substring(2,4));
+					_ano = Integer.parseInt(data.substring(5,9));
+				}
+			}	
+			this.setData(_dia,_mes,_ano);
+		}
+	  
 
 	  public boolean isDataValida(int _dia, int _mes, int _ano){
 	    
@@ -184,7 +236,12 @@ public class Data {
 	  //tratamento de erro
 	  
 	  public class DatainvalidaException extends RuntimeException{
-	        DatainvalidaException(String message){
+	        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+			DatainvalidaException(String message){
 	            super(message);
 	        }
 	    }
@@ -218,12 +275,7 @@ public class Data {
 			return data;
 		}
 
-	    /**
-	     *
-	     * @param date2
-	     * @return
-	     * @throws Exception
-	     */
+	   
 	    public int compareTo(Data date2) throws Exception {
 			if( this.getAno() > date2.getAno() ) {
 				return 1;

@@ -17,7 +17,9 @@ public class Horario {
 	        this.setHorario(0,0);
 	    }
 	    
-	    
+	    Horario(String horario) throws Exception{
+	    	this.setHorario(horario);
+	    }
 	    
 	    public static boolean horavalida(int horas,int minutos){
 	        if(horas<0 || horas>23) return false;
@@ -28,10 +30,31 @@ public class Horario {
 	    }
 	    
 	    public class HorarioinvalidoException extends RuntimeException{
-	        HorarioinvalidoException(String message){
+	        /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			HorarioinvalidoException(String message){
 	            super(message);
 	        }
 	    }
+	    
+	    public void setHorario(String horario) throws Exception {
+	    	int _hora = 0;
+	    	int _minutos = 0;
+	    	int cont;
+	    	
+	    	cont = horario.indexOf(":");
+	    	
+	    	if(cont==2) {
+	    		_hora= Integer.parseInt(horario.substring(0,2));
+	    		_minutos = Integer.parseInt(horario.substring(3,4));
+	    	}
+	    	this.setHorario(_hora,_minutos);
+	    	
+	    }
+	    
 	    public void setHorario(int horas, int minutos) throws Exception{
 	        if (Horario.horavalida(horas,minutos)){
 	            setHora(horas);
