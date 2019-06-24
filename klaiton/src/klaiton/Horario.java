@@ -27,20 +27,27 @@ public class Horario {
 	        return true;
 	    }
 	    
-	    public class DatainvalidaException extends RuntimeException{
-	        DatainvalidaException(String message){
+	    public class HorarioinvalidoException extends RuntimeException{
+	        HorarioinvalidoException(String message){
 	            super(message);
 	        }
 	    }
 	    public void setHorario(int horas, int minutos) throws Exception{
 	        if (Horario.horavalida(horas,minutos)){
-	            this.hora = horas;
-	            this.minutos= minutos;
+	            setHora(horas);
+	            setMinutos(minutos);
 	        }
 	        else {
-	            throw new DatainvalidaException("Data invalida");
+	            throw new HorarioinvalidoException("Data invalida");
 	        
 	        }
+	    }
+	    
+	    public void setHora(int _hora) {
+	    	this.hora=_hora;	
+	    }
+	    public void setMinutos(int _minutos) {
+	    	this.minutos=_minutos;
 	    }
 	    
 	    public int getHora() {
