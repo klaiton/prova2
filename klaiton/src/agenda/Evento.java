@@ -3,6 +3,10 @@ package agenda;
 public class Evento extends ItemAgenda{
 	String local;
 	
+	Evento(String _local){
+		this.setLocal(_local);
+	}
+	
 	public String getLocal() {
 		return local;
 	}
@@ -19,8 +23,6 @@ public class Evento extends ItemAgenda{
         Evento outroevento = (Evento) object;
         
        return (this.local == outroevento.local);
-    		   
-            
     }
    
    @Override

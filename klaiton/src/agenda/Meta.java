@@ -7,13 +7,6 @@ public class Meta extends ItemAgenda{
 	private int prioridade;
     private EscalaMeta meta;
 	
-	
-  
-
-	Meta(){
-    	
-    }
-    
     Meta(int _prioridade){
     	this.inserirPrioridade(_prioridade);
     }

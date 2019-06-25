@@ -8,12 +8,6 @@ public class Periodo {
 	private Horario horarioInicio;
 	private Horario horarioFim;
 	
-	
-	
-	Periodo(){
-		
-	}
-	
 	Periodo(String dataIni, String horarioIni,String dataF,String horarioF)throws Exception{
 		this.iserirPeriodoInicio(dataIni, horarioIni);
 		this.iserirPeriodoFim(dataF, horarioF);
