@@ -1,9 +1,23 @@
 package agenda;
 
-public class Evento extends ItemAgenda{
+import klaiton.Periodo;
+
+public class Evento extends ItemAgenda implements Comparable<Evento>{
+	
 	String local;
 	
+	
+	
 	Evento(String _local){
+		this.setLocal(_local);
+	}
+	
+	 Evento(String registro,String descricao,Periodo periodo, String local){
+	    	super (registro,descricao,periodo);
+	    	this.inserirEvento(local);
+	    }
+	 
+	public void inserirEvento(String _local) {
 		this.setLocal(_local);
 	}
 	
@@ -34,14 +48,8 @@ public class Evento extends ItemAgenda{
 		return dados.toString();
 	}
    
-   public int compareTo(Evento _evento) throws Exception {
-		if(this.local.compareTo(_evento.local)==1) {
-			return 1;
-		}
-		if(this.local.compareTo(_evento.local)==-1) {
-			return -1;
-		}
-		
-		return 0;
-	}
+   public int compareTo(Evento outroevento) {
+	   return this.local.compareTo(outroevento.local);
+   }
+   
 }

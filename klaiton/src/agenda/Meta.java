@@ -1,12 +1,13 @@
 package agenda;
 
+import klaiton.Periodo;
 
-
-public class Meta extends ItemAgenda{
+public class Meta extends ItemAgenda implements Comparable<Meta>{
 	//prioridade da meta
 	private int prioridade;
     private EscalaMeta meta;
 	
+    
     Meta(int _prioridade){
     	this.inserirPrioridade(_prioridade);
     }
@@ -15,7 +16,12 @@ public class Meta extends ItemAgenda{
     	this.setMeta(_meta);
     }
     
-	public enum EscalaMeta{
+    Meta(String registro,String descricao,Periodo periodo, int prioridade){
+    	super (registro,descricao,periodo);
+    	this.inserirPrioridade(prioridade);
+    }
+    
+    public enum EscalaMeta{
 		MEGAIMPORTANTE(40), IMPORTANTE(20), REGULAR(10), POUCOIMPORTANTE(5);
 		
 		private int codigo;
@@ -74,7 +80,7 @@ public class Meta extends ItemAgenda{
 		return dados.toString();
 	}
    
-   public int compareTo(Meta _meta) throws Exception {
+   public int compareTo(Meta _meta) {
 		if(this.prioridade > _meta.prioridade) {
 			return 1;
 		}
@@ -82,14 +88,6 @@ public class Meta extends ItemAgenda{
 			return -1;
 		}
 		
-		else {
-			 if(this.meta.codigo > _meta.meta.codigo) {
-				return 1;
-			 }
-			 if(this.meta.codigo < _meta.meta.codigo) {
-				return -1;
-			 }	
-			}
 		return 0;
 	}
 }

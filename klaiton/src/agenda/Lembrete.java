@@ -1,6 +1,8 @@
 package agenda;
 
-public class Lembrete extends ItemAgenda{
+import klaiton.Periodo;
+
+public class Lembrete extends ItemAgenda implements Comparable<Lembrete>{
 	int minutos;
 	String alerta;
 	
@@ -9,6 +11,16 @@ public class Lembrete extends ItemAgenda{
 		this.setAlerta(_alerta);
 		this.setMinutos(_minutos);
 		
+	}
+	
+	Lembrete(String registro,String descricao,Periodo periodo, int minutos,String alerta){
+	    	super (registro,descricao,periodo);
+	    	this.inserirLembrete(minutos,alerta);
+	    }
+	
+	public void inserirLembrete(int _minutos, String _alerta) {
+			this.setMinutos(_minutos);
+			this.setAlerta(_alerta);
 	}
 	
 	
@@ -48,21 +60,14 @@ public class Lembrete extends ItemAgenda{
 		return dados.toString();
 	}
    
-   public int compareTo(Lembrete _lembrete) throws Exception {
+   public int compareTo(Lembrete _lembrete) {
 		if(this.minutos > _lembrete.minutos) {
 			return 1;
 		}
 		if(this.minutos < _lembrete.minutos) {
 			return -1;
 		}
-		else {
-			if(this.alerta.compareTo(_lembrete.alerta)==1) {
-				return 1;
-			}
-			if(this.alerta.compareTo(_lembrete.alerta)==-1) {
-				return -1;
-			}	
-		}
+		
 		return 0;
 	}
 	
