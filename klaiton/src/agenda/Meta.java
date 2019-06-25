@@ -1,5 +1,7 @@
 package agenda;
 
+
+
 public class Meta extends ItemAgenda{
 	//prioridade da meta
 	private int prioridade;
@@ -56,6 +58,46 @@ public class Meta extends ItemAgenda{
 	}
 
 ////to string
-	
+	@Override
+    public boolean equals(Object object){
+        if(!(object instanceof Meta)) return false;
+        
+        Meta outrameta = (Meta) object;
+        
+       return (this.prioridade == outrameta.prioridade && this.meta == outrameta.meta);
+    		   
+            
+    }
+   
+   @Override
+   public String toString() {
+		StringBuilder dados = new StringBuilder();
+		dados.append(super.toString());
+		dados.append(" ");
+		dados.append(this.getPrioridade());
+		dados.append(" ");
+		dados.append(this.getMeta());
+		
+		return dados.toString();
+	}
+   
+   public int compareTo(Meta _meta) throws Exception {
+		if(this.prioridade > _meta.prioridade) {
+			return 1;
+		}
+		if(this.prioridade < _meta.prioridade) {
+			return -1;
+		}
+		
+		else {
+			 if(this.meta.codigo > _meta.meta.codigo) {
+				return 1;
+			 }
+			 if(this.meta.codigo < _meta.meta.codigo) {
+				return -1;
+			 }	
+			}
+		return 0;
+	}
 }
 

@@ -53,7 +53,8 @@ public abstract class ItemAgenda {
 	    dados.append(this.getRegistro());
 	    dados.append(" , ");
 	    dados.append(this.getDescricao());
-	    
+	    dados.append(" , ");
+	    dados.append(this.periodoItem.toString());
 	    return dados.toString();
 	  }
 	
