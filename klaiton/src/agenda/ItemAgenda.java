@@ -1,15 +1,21 @@
 package agenda;
-
-
-
 import klaiton.Periodo;
 
+/**
+ * Essa classe que é abstrata possui registro 
+ * descricao e periodo de um item em uma agenda
+ * 
+ * @author klaiton
+ *
+ */
 public abstract class ItemAgenda {
 	private String registro;
 	private String descricao;
 	private Periodo periodoItem;
 	
-	//// implementar Item Agenda
+	/**
+	 * construtor padrao default
+	 */
 	ItemAgenda(){
 		
 	}
