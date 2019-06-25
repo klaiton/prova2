@@ -3,7 +3,7 @@ import klaiton.Periodo;
 
 /**
  * Essa classe que é abstrata possui registro 
- * descricao e periodo de um item em uma agenda
+ * descricao e periodo de um item em uma agenda 
  * 
  * @author klaiton
  *
@@ -19,6 +19,11 @@ public abstract class ItemAgenda {
 	ItemAgenda(){
 		
 	}
+	
+	/**
+	 * Construtor com parametro registro de entrada
+	 * @param registro
+	 */
 	
 	ItemAgenda(String registro){
 		setRegistro(registro);
